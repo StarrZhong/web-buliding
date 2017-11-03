@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'customFonts';
+  src:  url('fonts/customFonts.eot?q9xsnm');
+  src:  url('fonts/customFonts.eot?q9xsnm#iefix') format('embedded-opentype'),
+    url('fonts/customFonts.ttf?q9xsnm') format('truetype'),
+    url('fonts/customFonts.woff?q9xsnm') format('woff'),
+    url('fonts/customFonts.svg?q9xsnm#customFonts') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="westportFont-"], [class*=" westportFont-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'customFonts' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.westportFont-arrow2-down:before {
+  content: "\e900";
+}
+.westportFont-arrow2-left:before {
+  content: "\e901";
+}
+.westportFont-arrow2-right:before {
+  content: "\e902";
+}
+.westportFont-arrow2-up:before {
+  content: "\e903";
+}
+.westportFont-arrow3-down:before {
+  content: "\e904";
+}
+.westportFont-arrow3-left:before {
+  content: "\e905";
+}
+.westportFont-arrow3-right:before {
+  content: "\e906";
+}
+.westportFont-arrow3-up:before {
+  content: "\e907";
+}
+.westportFont-arrow-down:before {
+  content: "\e908";
+}
+.westportFont-arrow-left:before {
+  content: "\e909";
+}
+.westportFont-arrow-right:before {
+  content: "\e90a";
+}
+.westportFont-arrow-up:before {
+  content: "\e90b";
+}
+.westportFont-camera:before {
+  content: "\e90c";
+}
+.westportFont-close:before {
+  content: "\e90d";
+}
+.westportFont-contact:before {
+  content: "\e90e";
+}
+.westportFont-delete:before {
+  content: "\e90f";
+}
+.westportFont-inquiry:before {
+  content: "\e910";
+}
+.westportFont-reload:before {
+  content: "\e911";
+}

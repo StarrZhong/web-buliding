@@ -1,0 +1,89 @@
+@charset 'UTF-8'
+
+
+// 絕對定位 - 自訂
+@mixin abPos( $posX:0 , $posY:0 )
+	position: absolute
+	left: $posX
+	top: $posY
+
+// 絕對定位 - 水平垂直置中
+@mixin abPosCenter
+	position: absolute
+	left: 50%
+	top: 50%
+	transform: translate(-50%,-50%)
+
+//設定浮動區塊
+@mixin floatBox
+	&:after
+		content: ''
+		width: 100%
+		display: table
+		clear: both
+@mixin flexBox($align: left, $valign: top)
+	display: flex
+	flex-wrap: wrap
+	@if $align ==  left
+		justify-content: flex-start
+	@if $align ==  center
+		justify-content: center
+	@if $align ==  right
+		justify-content: flex-end
+	@if $align ==  space-between
+		justify-content: space-between
+	@if $align ==  space-around
+		justify-content: space-around
+	@if $valign ==  top
+		align-items: flex-start
+	@if $valign ==  center
+		align-items: center
+	@if $valign ==  bottom
+		align-items: flex-end
+	@if $valign ==  stretch
+		align-items: stretch
+	@if $valign ==  baseline
+		align-items: baseline
+	&[class*="in_"]
+		> *
+			padding-left: $gutter
+			padding-right: $gutter
+			@media screen and (min-width:  $device-xl )
+				padding-left: $gutter-xl
+				padding-right: $gutter-xl
+	@for $i from 1 through $flex-column
+		&.in_#{$i}c
+			> *
+				width: 1 / $i  * 100 + %
+
+
+//基本transition
+@mixin transition ( $sec: 0.3s, $delay: 0s, $tFunction: ease-in-out)
+	transition: all $sec $delay $tFunction
+
+@mixin container
+	padding-left: $gutter
+	padding-right: $gutter
+	margin: 0 auto
+	width: 100%
+	&.nogap
+		padding-left: 0
+		padding-right: 0
+	@media screen and (min-width: $device-sm)
+		width: $device-sm-width
+	@media screen and (min-width: $device-md)
+		width: $device-md-width
+	@media screen and (min-width: $device-lg)
+		width: $device-lg-width
+	@media screen and (min-width: $device-xl)
+		width: $device-xl-width
+
+@function deviceWidth ($device)
+	@if $device ==  sm
+		@return $device-sm-width
+	@if $device ==  md
+		@return $device-md-width
+	@if $device ==  lg
+		@return $device-lg-width
+	@if $device ==  xl
+		@return $device-xl-width
