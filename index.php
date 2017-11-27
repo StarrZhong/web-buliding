@@ -12,6 +12,8 @@
 	<div class="wrapper">
 		<?php include('common/header.php');?>
 		<div class="main">
+			<div class="editorBlock">
+				<table></table>
 		</div>
 		<?php include('common/footer.php');?>
 	</div>
