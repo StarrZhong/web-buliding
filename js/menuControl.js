@@ -1,36 +1,4 @@
 $(document).ready(function(){
-	$('.hamburger').click(() => {
-		$('.mobileMenuBlock').addClass('active');
-		$('html,body').addClass('noScroll');	
-	});
-	$('.mobileMenuBlock__Close').click(() => {
-		$('.mobileMenuBlock').removeClass('active');
-		$('html,body').removeClass('noScroll');	
-		$('.mobileMenuBlock .mobileMenuBox').removeClass('show').removeClass('hideLeft').eq(0).addClass('show');
-	});
-	$('.mobileMenuBlock__Back').click(function() {
-		let targetBack = $('.mobileMenuBlock .mobileMenuBox.show .memuTitle').data('back');
-		$('.mobileMenuBlock .mobileMenuBox.show').removeClass('show');
-		$(targetBack).removeClass('hideLeft').addClass('show');
-		targetBack = $('.mobileMenuBlock .mobileMenuBox.show .memuTitle').data('back');
-		console.log(targetBack);
-		if( targetBack == null || targetBack == undefined || targetBack == ''){
-			$(this).removeClass('show');
-		}
-	});
-	$(window).scroll(function(){
-		let headerH = getHeaderHeight();
-		let thisScrollTop = $(this).scrollTop();
-		if(thisScrollTop > headerH){
-			$('header').addClass('scroll');
-		} else {
-			$('header').removeClass('scroll');
-		}
-	});
-
-
-
-
 	// 手機版選單建置
 	
 
@@ -46,7 +14,7 @@ $(document).ready(function(){
 		} else{
 			if( thisMenu.parent('li').length ){
 				let thisMenuText = thisMenu.parent('li').find('.text').eq(0).text();
-				thisMenu.prepend('<li href="javascript:void(0);" class="memuTitle">'+thisMenuText+'</li>');
+				thisMenu.prepend('<li href="javascript:void(0);" class="mobileMenu-Back"><span class="icon cusIcon-arrow-left"></span><span class="text">'+thisMenuText+'</span></li>');
 				thisMenu.parent('li').attr("data-target",'#menu_'+menuCount);
 				menuCount++;
 			}
@@ -68,9 +36,46 @@ $(document).ready(function(){
 		let openMenuBox = $(this).data('target');
 		let ThisUlId = '#'+$(this).parents('.mobileMenuBox').eq(0).attr('id');
 		$(this).parents('.mobileMenuBox').eq(0).removeClass('show').addClass('hideLeft');
-		$(openMenuBox).find('.memuTitle').attr('data-back',ThisUlId);
+		$(openMenuBox).find('.mobileMenu-Back').attr('data-back',ThisUlId);
 		$(openMenuBox).addClass('show');
-		$('.mobileMenuBlock__Back').addClass('show');
+	});
+
+
+
+	$('.hamburger').click(() => {
+		$('.mobileMenuBlock').addClass('active');
+		$('.coverBody').addClass('show');
+		$('html,body').addClass('noScroll');
+		$('.mobileMenuBlock .mobileMenuBox').eq(0).addClass('show');
+	});
+	$('.coverBody').click(function(){
+		$('.mobileMenuBlock').removeClass('active');
+		$('.coverBody').removeClass('show');
+		$('html,body').removeClass('noScroll');
+	});
+	$('.mobileMenuBlock__Close').click(() => {
+		$('.mobileMenuBlock').removeClass('active');
+		$('html,body').removeClass('noScroll');	
+		$('.mobileMenuBlock .mobileMenuBox').removeClass('show').removeClass('hideLeft').eq(0).addClass('show');
+	});
+	$('.mobileMenuBlock__Bg').click(function(){
+		$('.mobileMenuBlock').removeClass('active');
+		$('.coverBody').removeClass('show');
+		$('html,body').removeClass('noScroll');
+		$('.mobileMenuBlock .mobileMenuBox').removeClass('show');
+	});
+	$('.mobileMenu-Back').click(function() {
+		
+		let targetBack = $('.mobileMenuBlock .mobileMenuBox.show .mobileMenu-Back').data('back');
+		
+
+		if( targetBack == null || targetBack == undefined || targetBack == ''){
+			$('.mobileMenuBlock').removeClass('active');
+			$('.coverBody').removeClass('show');
+			$('html,body').removeClass('noScroll');	
+		} else {
+			$('.mobileMenuBlock .mobileMenuBox.show').removeClass('show');
+			$(targetBack).removeClass('hideLeft').addClass('show');
+		}
 	});
 });
-
