@@ -84,6 +84,15 @@ function scrollAnimateSet(ele){
 		// ele.addClass('scrollAnimate');
 	}
 }
+
+function getHeader(){
+	if($(window).width() > hamburgerPoint){
+		return $('header').innerHeight();
+	} else {
+		return $('.mobile-header').innerHeight();
+	}
+}
+
 /*================================================================
 功能：調整編輯器內容的表格與影片
 ================================================================*/
