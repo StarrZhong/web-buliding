@@ -33,3 +33,11 @@ $flex-column: 5
 			.col-#{$dev}-#{$i}
 				width: $i / $column * 100 + %
 		
+@media screen and (max-width: ($device-sm - 1) )
+	@for $i from 1 through $column
+		.col-xs-#{$i}
+			width: $i / $column * 100 + %
+@media screen and (max-width: $device-xs )
+	@for $i from 1 through $column
+		.col-xxs-#{$i}
+			width: $i / $column * 100 + %

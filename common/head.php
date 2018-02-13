@@ -5,5 +5,6 @@
 <link rel="stylesheet" href="fonts/customFonts/style.css">
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style01.css">
 
 <script src="js/jquery-3.2.1.min.js"></script>
