@@ -14,7 +14,7 @@ $(document).ready(function(){
 		} else{
 			if( thisMenu.parent('li').length ){
 				let thisMenuText = thisMenu.parent('li').find('.text').eq(0).text();
-				thisMenu.prepend('<li href="javascript:void(0);" class="mobileMenu-Back"><span class="icon cusIcon-arrow-left"></span><span class="text">'+thisMenuText+'</span></li>');
+				thisMenu.prepend('<li class="mobileMenu-Back"><span class="icon cusIcon-arrow-left"></span><span class="text">'+thisMenuText+'</span></li>');
 				thisMenu.parent('li').attr("data-target",'#menu_'+menuCount);
 				menuCount++;
 			}
@@ -35,7 +35,7 @@ $(document).ready(function(){
 	$('.mobileMenuBox ul li.more').click(function(){
 		let openMenuBox = $(this).data('target');
 		let ThisUlId = '#'+$(this).parents('.mobileMenuBox').eq(0).attr('id');
-		$(this).parents('.mobileMenuBox').eq(0).removeClass('show').addClass('hideLeft');
+		$(this).parents('.mobileMenuBox').eq(0).removeClass('show').addClass('hide');
 		$(openMenuBox).find('.mobileMenu-Back').attr('data-back',ThisUlId);
 		$(openMenuBox).addClass('show');
 	});
@@ -45,24 +45,15 @@ $(document).ready(function(){
 	$('.hamburger').click(() => {
 		$('.mobileMenuBlock').addClass('active');
 		$('.coverBody').addClass('show');
-		$('html,body').addClass('noScroll');
+		$('html,body').addClass('noScroll').addClass('menuOpen');
 		$('.mobileMenuBlock .mobileMenuBox').eq(0).addClass('show');
-	});
-	$('.coverBody').click(function(){
-		$('.mobileMenuBlock').removeClass('active');
-		$('.coverBody').removeClass('show');
-		$('html,body').removeClass('noScroll');
-	});
-	$('.mobileMenuBlock__Close').click(() => {
-		$('.mobileMenuBlock').removeClass('active');
-		$('html,body').removeClass('noScroll');	
-		$('.mobileMenuBlock .mobileMenuBox').removeClass('show').removeClass('hideLeft').eq(0).addClass('show');
 	});
 	$('.mobileMenuBlock__Bg').click(function(){
 		$('.mobileMenuBlock').removeClass('active');
 		$('.coverBody').removeClass('show');
-		$('html,body').removeClass('noScroll');
+		$('html,body').removeClass('noScroll').removeClass('menuOpen');
 		$('.mobileMenuBlock .mobileMenuBox').removeClass('show');
+		$('.mobileMenuBlock .mobileMenuBox').eq(0).addClass('show');
 	});
 	$('.mobileMenu-Back').click(function() {
 		
@@ -72,10 +63,10 @@ $(document).ready(function(){
 		if( targetBack == null || targetBack == undefined || targetBack == ''){
 			$('.mobileMenuBlock').removeClass('active');
 			$('.coverBody').removeClass('show');
-			$('html,body').removeClass('noScroll');	
+			$('html,body').removeClass('noScroll').removeClass('menuOpen');	
 		} else {
 			$('.mobileMenuBlock .mobileMenuBox.show').removeClass('show');
-			$(targetBack).removeClass('hideLeft').addClass('show');
+			$(targetBack).removeClass('hide').addClass('show');
 		}
 	});
 });

@@ -2,7 +2,6 @@ var scrollType = { "type": "default"};
 $(document).ready(function(){
 	// 判斷往上或往下滾動
 	let scrollTop_before = $(window).scrollTop();
-	let scrollType = '';
 	$(window).scroll(function(){
 		if($(this).scrollTop() > scrollTop_before){
 			scrollType.type = 'down';

@@ -1,17 +1,22 @@
 <div class="mobileHeader">
-	<a class="mobile-logo" href="index.php">
-		<img src="images/logo.svg" alt="">
-	</a>
+	<h1 class="mobile-logo">
+		<a href="index.php">
+			<img src="images/logo.svg" alt="">
+		</a>
+	</h1>
 	<div class="hamburger">
 		<div class="line"></div>
 	</div>
 </div>
 <div class="mobileMenuBlock">
-	<div class="mobileMenuBlock__Close"></div>
-	<div class="mobileMenuBlock__Back"><span class="cusFonts-return"></span></div>
+	<div class="mobileMenuBlock__Bg"></div>
 	<div class="mobileMenuBoxArea">
 		<div class="mobileMenuBox">
 			<ul class="mobileMenu">
+				<li class="mobileMenu-Back">
+					<span class="icon"></span>
+					<span class="text">Menu</span>
+				</li>
 				<li>
 					<a href="about.php">
 						<span class="text">選單項目</span>
