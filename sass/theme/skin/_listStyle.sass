@@ -1,2 +1,24 @@
 @charset 'UTF-8'
 
+.itemImg
+	position: relative
+	display: block
+	width: 100%
+	height: 0
+	padding-bottom: $itemImgSize
+	overflow: hidden
+	img
+		+abPosCenter
+		display: block
+		height: 100%
+		width: auto
+		max-width: none
+		max-height: none
+	&.noneImg
+		background-color: $cis-color-1
+		background-image: url('../images/noImage.svg')
+		background-repeat: no-repeat
+		background-size: contain
+		background-position: center center
+		img
+			display: none

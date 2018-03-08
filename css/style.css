@@ -218,3 +218,31 @@ body.menuOpen .mobileHeader, body.menuOpen .mobile-bottom, body.menuOpen .wrappe
       padding-top: 10px;
       padding-bottom: 10px;
       text-align: center; }
+
+.itemImg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+  overflow: hidden; }
+  .itemImg img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    max-height: none; }
+  .itemImg.noneImg {
+    background-color: #00C8C8;
+    background-image: url("../images/noImage.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center; }
+    .itemImg.noneImg img {
+      display: none; }

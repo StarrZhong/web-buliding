@@ -29,6 +29,15 @@ $(document).ready(function(){
 			scrollTo( $(targetTo) );
 		}
 	});
+	//itemImg裡面圖片沒有圖的預設圖
+	$('.itemImg').each(function(){
+		var thisItemImg = $(this);
+		var image = new Image();
+		image.src = $(this).children('img').attr('src');
+		image.onerror = function(){	
+			thisItemImg.addClass('noneImg');
+		}
+	});
 	
 });
 
