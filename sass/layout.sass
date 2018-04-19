@@ -12,8 +12,8 @@ $flex-column: 5
 	box-sizing: border-box
 .row
 	+floatBox
-	padding-left: $gutter*-1
-	padding-right: $gutter*-1
+	margin-left: $gutter*-1
+	margin-right: $gutter*-1
 
 .floatBox
 	+floatBox
@@ -22,6 +22,14 @@ $flex-column: 5
 .flexBox
 	+flexBox(left,top)
 
+
+@each $dev in $deviceList
+	@media screen and (min-width: deviceWidth($dev) )
+		.hidden-#{$dev}-up
+			display: none
+	@media screen and (max-width: deviceWidth($dev)-1 )
+		.hidden-#{$dev}-down
+			display: none
 [class*=col-]
 	width: 100%
 	padding-left: $gutter
@@ -34,6 +42,13 @@ $flex-column: 5
 		@for $i from 1 through $column
 			.col-#{$dev}-#{$i}
 				width: $i / $column * 100 + %
+			.col-#{$dev}-push-#{$i}
+				left: $i / $column * 100 + %
+			.col-#{$dev}-pull-#{$i}
+				left: $i / $column * -100 + %
+			.col-#{$dev}-offset-#{$i}
+				margin-left: $i / $column * 100 + %
+				
 		
 @media screen and (max-width: ($device-sm - 1) )
 	@for $i from 1 through $column

@@ -12,7 +12,8 @@ $(document).ready(function(){
 	});
 	// 滾動動畫設定
 	$('.scrollAnimate').each(function(){
-		scrollAnimateSet($(this));
+		var animate = $(this).data('animate');
+		scrollAnimateSet($(this),animate);
 		scrollAnimate($(this));
 	});
 	// 燈箱設定
@@ -21,6 +22,9 @@ $(document).ready(function(){
 		if ( $(target_LB).length ){
 			$(target_LB).addClass('active');
 		}
+	});
+	$('.lightbox').on('click','.lightbox__Bg, .lightbox__close',function(){
+		$(this).parents('.lightbox').removeClass('active');
 	});
 	// 滾動定位
 	$('.scrollTo').click(function(){
@@ -75,29 +79,38 @@ function scrollTo(ele){
 
 // 滾動動畫
 function scrollAnimate(ele){
+	var animate = ele.data('animate');
 	$(window).scroll(function(){
-		scrollAnimateSet(ele);
+		scrollAnimateSet(ele,animate);
 	});
 }
-function scrollAnimateSet(ele){
-	let windowHeight = $(window).outerHeight();
-	let WHPercent = 0.75;
-	let scrollTop = $(window).scrollTop();
-	let scrollEdge = scrollTop + windowHeight * WHPercent;
-	let elementTop = ele.offset().top;
-
-	if( scrollEdge >= elementTop ){
-		ele.removeClass('scrollAnimate');
+function scrollAnimateSet(ele,animate){
+	var windowHeight = $(window).outerHeight();
+	var WHPercent = 0.75;
+	var scrollTop = $(window).scrollTop();
+	var scrollEdge = scrollTop + windowHeight * WHPercent;
+	var elementTop = ele.offset().top;
+	if (animate != '' && animate != null && animate != undefined){
+		if( scrollEdge >= elementTop ){
+			ele.addClass('animated '+animate);
+		} else {
+			// ele.removeClass(animate);
+		}
 	} else {
-		// ele.addClass('scrollAnimate');
+		if( scrollEdge >= elementTop ){
+			ele.addClass('cusAnimated');
+		} else {
+			// ele.removeClass('cusAnimated');
+		}
 	}
+	
 }
 
 function getHeader(){
 	if($(window).width() > hamburgerPoint){
 		return $('header').innerHeight();
 	} else {
-		return $('.mobile-header').innerHeight();
+		return $('.mobileHeader').innerHeight();
 	}
 }
 

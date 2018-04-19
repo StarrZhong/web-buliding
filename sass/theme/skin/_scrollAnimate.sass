@@ -1,0 +1,12 @@
+@charset 'UTF-8'
+
+.scrollAnimate
+	top: 0
+	left: 0
+	position: relative
+	visibility: hidden
+	animation-name: none
+	&.animated,&.cusAnimated
+		visibility: visible
+	&[data-animate^=fadeOut]
+		visibility: visible

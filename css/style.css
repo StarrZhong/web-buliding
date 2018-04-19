@@ -246,3 +246,15 @@ body.menuOpen .mobileHeader, body.menuOpen .mobile-bottom, body.menuOpen .wrappe
     background-position: center center; }
     .itemImg.noneImg img {
       display: none; }
+
+.scrollAnimate {
+  top: 0;
+  left: 0;
+  position: relative;
+  visibility: hidden;
+  -webkit-animation-name: none;
+  animation-name: none; }
+  .scrollAnimate.animated, .scrollAnimate.cusAnimated {
+    visibility: visible; }
+  .scrollAnimate[data-animate^=fadeOut] {
+    visibility: visible; }
