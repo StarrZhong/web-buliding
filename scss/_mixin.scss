@@ -15,7 +15,35 @@
 	top: 50%;
 	transform: translate(-50%,-50%);
 }
-
+//基本transition
+@mixin transition ( $sec: 0.3s, $delay: 0s, $tFunction: ease-in-out){
+	transition: all $sec $delay $tFunction;
+}
+//設定主要內容寬度
+@mixin container{
+	padding-left: $gutter;
+	padding-right: $gutter;
+	margin: 0 auto;
+	width: 100%;
+	$wideRange: min-width;
+	@each $detect, $value in $detectDeviceSetting{
+		@if $detect == xs or $detect == xxs {
+			$wideRange: max-width;
+		}
+		@media screen and ($wideRange: map-get($value,detectWidth)) {
+			width: map-get($value,width);
+		}
+	}
+}
+@mixin column{
+	width: 100%;
+	padding-left: $gutter;
+	padding-right: $gutter;
+	&.nogap {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
 //設定浮動區塊
 @mixin floatBox{
 	&:after{
@@ -23,6 +51,9 @@
 		width: 100%;
 		display: table;
 		clear: both;
+	}
+	#{$inBoxTag}{
+		float: left;
 	}
 }
 @mixin flexBox($align: left, $valign: top){
@@ -58,60 +89,100 @@
 	@if $valign ==  baseline{
 		align-items: baseline;
 	}
+	
+}
+
+
+@mixin inBoxColumn($col: $column){
 	&[class*="in_"]{
-		> *{
-			padding-left: $gutter;
-			padding-right: $gutter;
+		#{$inBoxTag}{
+			@include column;
+			margin-bottom: $gutter*2;
 		}
 	}
-	@for $i from 1 through $flex-column{
-		&.in_#{$i}c{
-			> *{
-				width: 1 / $i  * 100 + %;
+	@for $i from 2 through $col{
+		@if $i == 2{
+			&.in_#{$i}c{
+				#{$inBoxTag}{
+					width: 100%;
+					@media screen and (min-width: $device-sm){
+						width: 1 / $i  * 100 + %;
+					}
+				}
+			}
+
+		} @else if $i == 3{
+			&.in_#{$i}c{
+				#{$inBoxTag}{
+					width: 100%;
+					@media screen and (min-width: $device-sm){
+						width: 1 / $i  * 100 + %;
+					}
+				}
+			}
+
+		} @else if $i == 4{
+			&.in_#{$i}c{
+				#{$inBoxTag}{
+					width: 100%;
+					@media screen and (min-width: $device-sm){
+						width: 50%;
+					}
+					@media screen and (min-width: $device-lg){
+						width: 1 / $i  * 100 + %;
+					}
+				}
+			}
+			
+		} @else if $i == 5{
+			&.in_#{$i}c{
+				#{$inBoxTag}{
+					width: 100%;
+					@media screen and (min-width: $device-sm){
+						width: 50%;
+					}
+					@media screen and (min-width: $device-md){
+						width: 33.33%;
+					}
+					@media screen and (min-width: $device-xl){
+						width: 1 / $i  * 100 + %;
+					}
+				}
+			}
+			
+		} @else if $i == 6{
+			&.in_#{$i}c{
+				#{$inBoxTag}{
+					width: 100%;
+					@media screen and (min-width: $device-sm){
+						width: 50%;
+					}
+					@media screen and (min-width: $device-md){
+						width: 33.33%;
+					}
+					@media screen and (min-width: $device-xl){
+						width: 1 / $i  * 100 + %;
+					}
+				}
+			}
+		} @else {
+			&.in_#{$i}c{
+				#{$inBoxTag}{
+					width: 100%;
+					@media screen and (min-width: $device-sm){
+						width: 50%;
+					}
+					@media screen and (min-width: $device-md){
+						width: 33.33%;
+					}
+					@media screen and (min-width: $device-xl){
+						width: 1 / $i  * 100 + %;
+					}
+				}
 			}
 		}
 	}
 }
 
-//基本transition
-@mixin transition ( $sec: 0.3s, $delay: 0s, $tFunction: ease-in-out){
-	transition: all $sec $delay $tFunction;
-}
 
-@mixin container{
-	padding-left: $gutter;
-	padding-right: $gutter;
-	margin: 0 auto;
-	width: 100%;
-	@include floatBox;
-	&.nogap{
-		padding-left: 0;
-		padding-right: 0;
-	}
-	@media screen and (min-width: $device-sm){
-		width: $device-sm-width;
-	}
-	@media screen and (min-width: $device-md){
-		width: $device-md-width;
-	}
-	@media screen and (min-width: $device-lg){
-		width: $device-lg-width;
-	}
-	@media screen and (min-width: $device-xl){
-		width: $device-xl-width;
-	}
-}
-@function deviceWidth ($device){
-	@if $device ==  sm{
-		@return $device-sm-width;
-	}
-	@if $device ==  md{
-		@return $device-md-width;
-	}
-	@if $device ==  lg{
-		@return $device-lg-width;
-	}
-	@if $device ==  xl{
-		@return $device-xl-width;
-	}
-}
+

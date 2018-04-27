@@ -4,82 +4,71 @@
 @import 'config';
 @import 'mixin';
 
-$deviceList: ('sm' ,'md' ,'lg' ,'xl');
-$column: 12;
-$flex-column: 5;
-
 *{
 	box-sizing: border-box;
 }
-.row{
-	@include floatBox;
-	margin-left: $gutter*-1;
-	margin-right: $gutter*-1;
-}
-.floatBox{
-	@include floatBox;
-}
+
 .container{
 	@include container;
 }
-.flexBox{
-	@include flexBox(left,top);
-}
-
-
-@each $dev in $deviceList{
-	@media screen and (min-width: deviceWidth($dev) ){
-		.hidden-#{$dev}-up{
-			display: none;
-		}
-	}
-	@media screen and (max-width: deviceWidth($dev)-1 ){
-		.hidden-#{$dev}-down{
-			display: none;
-		}
-	}
-}
-[class*=col-]{
+.container-fluid{
 	width: 100%;
 	padding-left: $gutter;
 	padding-right: $gutter;
-	&.nogap {
-		padding-left: 0;
-		padding-right: 0;
-	}
+	margin: 0 auto;
+	width: 100%;
 }
-@each $dev in $deviceList{
-	@media screen and (min-width: deviceWidth($dev) ){
-		@for $i from 1 through $column{
-			.col-#{$dev}-#{$i}{
-				width: $i / $column * 100 + %;
-			}
-			.col-#{$dev}-push-#{$i}{
-				left: $i / $column * 100 + %;
-			}
-			.col-#{$dev}-pull-#{$i}{
-				left: $i / $column * -100 + %;
-			}
-			.col-#{$dev}-offset-#{$i}{
-				margin-left: $i / $column * 100 + %;
-			}
-		}
-	}
+.floatBox,.flexBox{
+	margin-left: $gutter*-1;
+	margin-right: $gutter*-1;
 }
-				
-		
-@media screen and (max-width: ($device-sm - 1) ){
-	@for $i from 1 through $column{
-		.col-xs-#{$i} {
-			width: $i / $column * 100 + %;
-		}
-	}
+	
+.floatBox{
+	@include floatBox;
+	@include inBoxColumn;
+	
 }
 
-@media screen and (max-width: $device-xs ){
-	@for $i from 1 through $column{
-		.col-xxs-#{$i} {
-			width: $i / $column * 100 + %;
+.flexBox{
+	@include flexBox(left,top);
+	@include inBoxColumn;
+}
+
+
+[class*=col-]{
+	@include column;
+}
+@each $detect, $value in $detectDeviceSetting{
+	@media screen and (min-width: map-get($value,detectWidth) ){
+		.hidden-#{$detect}-up{
+			display: none;
+		}
+	}
+	@media screen and (max-width: map-get($value,detectWidth)-1 ){
+		.hidden-#{$detect}-down{
+			display: none;
+		}
+	}
+}
+$wideRange: min-width;
+@each $detect, $value in $detectDeviceSetting{
+	@if $detect == xs or $detect == xxs {
+		$wideRange: max-width;
+	}
+	@media screen and ($wideRange: map-get($value,detectWidth)) {
+		@for $i from 1 through $column{
+			.col-#{$detect}-#{$i}{
+				width: $i / $column * 100 + %;
+			}
+			.col-#{$detect}-push-#{$i}{
+				left: $i / $column * 100 + %;
+			}
+			.col-#{$detect}-pull-#{$i}{
+				left: $i / $column * -100 + %;
+			}
+			.col-#{$detect}-offset-#{$i}{
+				margin-left: $i / $column * 100 + %;
+			}
 		}
 	}
 }
