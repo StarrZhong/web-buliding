@@ -1,0 +1,40 @@
+@charset 'UTF-8';
+
+//裝置尺寸設定
+$device-xs      : 554px;
+$device-sm      : 768px;
+$device-sm-width: 750px;
+$device-md      : 992px;
+$device-md-width: 970px;
+$device-lg      : 1200px;
+$device-lg-width: 1170px;
+$device-xl      : 1440px;
+$device-xl-width: 1420px;
+
+$gutter   : 15px;
+
+$hamburgerPoint: $device-md;
+$HeaderHeight: 80px;
+$mobileHeaderHeight: 60px;
+
+$itemImgSize: 75%;
+
+//顏色設定
+$cis-color-1: #00C8C8;
+$cis-color-1-light: lighten($cis-color-1,20%);
+$cis-color-2: #0083CB;
+$cis-color-3-light: lighten($cis-color-2,20%);
+$cis-color-3: #3B248A;
+$cis-color-3-light: lighten($cis-color-3,20%);
+$cis-color-4: #171C61;
+$cis-color-4-light: lighten($cis-color-3,20%);
+
+$cis-color-cover: rgba($cis-color-1,0.8);
+
+$cis-black: #000000;
+$cis-white: #FFFFFF;
+
+$base-fontSize: 16px;
+$base-lineHeight: 1.428571429;
+
+$text-color: #333333;

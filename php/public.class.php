@@ -4,7 +4,7 @@
 
 
 	// 取得檔案名稱
-	$path       = $_SERVER[PHP_SELF];
+	$path       = $_SERVER['PHP_SELF'];
 	$path_parts = pathinfo($path);
 	$fileName   = $path_parts['filename'];
 
