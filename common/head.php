@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/normalize.css">
 <link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="fonts/fontawesome/css/fontawesome-all.min.css">
 
 <link rel="stylesheet" href="js/slick/slick.css">
 <link rel="stylesheet" href="js/slick/slick-theme.css">

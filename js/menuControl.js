@@ -53,6 +53,7 @@ $(document).ready(function(){
 		$('.coverBody').removeClass('show');
 		$('html,body').removeClass('noScroll').removeClass('menuOpen');
 		$('.mobileMenuBlock .mobileMenuBox').removeClass('show');
+		$('.mobileMenuBlock .mobileMenuBox').removeClass('hide');
 		$('.mobileMenuBlock .mobileMenuBox').eq(0).addClass('show');
 	});
 	$('.mobileMenu-Back').click(function() {
