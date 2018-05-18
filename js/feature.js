@@ -1,4 +1,5 @@
 var scrollType = { "type": "default"};
+var hamburgerPoint = 992;
 $(document).ready(function(){
 	// 判斷往上或往下滾動
 	let scrollTop_before = $(window).scrollTop();
@@ -48,29 +49,29 @@ $(document).ready(function(){
 
 // 滾動到定位
 function scrollTo(ele){
-	let breakPoint = 992;
+	var breakPoint = 992;
 	if ( ele.length ){
-		let headerH = 0;
-		let ele_Header = $('header');
-		let ele_Header_M = $('.mobileHeader');
-		let ele_Header_height = 0;
-		let ele_Header_M_height = 0;
+		var headerH = 0;
+		var ele_Header = $('header');
+		var ele_Header_M = $('.mobileHeader');
+		var ele_Header_height = 0;
+		var ele_Header_M_height = 0;
 
 		if (ele_Header.length){
-			let ele_Header_height = ele_Header.innerHeight();
+			var ele_Header_height = ele_Header.innerHeight();
 		}
 		if (ele_Header_M.length){
-			let ele_Header_M_height = ele_Header_M.innerHeight();
+			var ele_Header_M_height = ele_Header_M.innerHeight();
 		}
 
-		if($(window).width() >= breakPoint){
+		if( window.innerWidth >= breakPoint){
 			headerH = ele_Header_height;
 		} else {
 			headerH = ele_Header_M_height;
 		}
-		let targetTop = ele.offset().top;
+		var targetTop = ele.offset().top;
 		
-		let scrollTarget = targetTop - headerH;
+		var scrollTarget = targetTop - headerH;
 		$('html,body').stop().animate({
 			scrollTop: scrollTarget
 		},300);
@@ -107,7 +108,8 @@ function scrollAnimateSet(ele,animate){
 }
 
 function getHeader(){
-	if($(window).width() > hamburgerPoint){
+	var window_w = window.innerWidth;
+	if(window_w > hamburgerPoint){
 		return $('header').innerHeight();
 	} else {
 		return $('.mobileHeader').innerHeight();
